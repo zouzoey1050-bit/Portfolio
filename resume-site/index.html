@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>邹恩熙｜增长运营作品集</title>
+  <style>
+    :root {
+      --bg: #f6f8fc;
+      --white: #ffffff;
+      --text: #111827;
+      --muted: #64748b;
+      --soft: #e5eaf3;
+      --blue: #2563eb;
+      --cyan: #06b6d4;
+      --purple: #7c3aed;
+      --pink: #ff2e63;
+      --green: #16a34a;
+      --shadow: 0 22px 60px rgba(15, 23, 42, 0.08);
+      --radius: 28px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: radial-gradient(circle at 8% 4%, rgba(37, 99, 235, 0.14), transparent 30%), radial-gradient(circle at 92% 10%, rgba(124, 58, 237, 0.12), transparent 28%), var(--bg);
+      color: var(--text); line-height: 1.75; overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    nav { position: sticky; top: 0; z-index: 100; backdrop-filter: blur(18px); background: rgba(246, 248, 252, 0.84); border-bottom: 1px solid rgba(148, 163, 184, 0.18); }
+    .nav-inner { max-width: 1180px; height: 72px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { font-weight: 800; letter-spacing: -0.04em; font-size: 20px; }
+    .logo span { color: var(--blue); }
+    .nav-links { display: flex; gap: 22px; color: var(--muted); font-size: 14px; font-weight: 600; }
+    .nav-links a:hover { color: var(--blue); }
+
+    .container { max-width: 1180px; margin: 0 auto; padding: 54px 24px 90px; }
+    .hero { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 28px; align-items: stretch; margin-top: 16px; }
+    .hero-card, .panel, .case-card, .timeline-item, .chart-card, .evidence-card, .video-card, .skill-card, .creative-card { background: rgba(255, 255, 255, 0.9); border: 1px solid rgba(226, 232, 240, 0.88); box-shadow: var(--shadow); border-radius: var(--radius); }
+    .hero-card { padding: 52px; position: relative; overflow: hidden; }
+    .hero-card::after { content: ""; position: absolute; width: 320px; height: 320px; right: -100px; top: -100px; border-radius: 999px; background: linear-gradient(135deg, rgba(37, 99, 235, 0.16), rgba(255, 46, 99, 0.12)); }
+    .badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 999px; background: #eef4ff; color: var(--blue); font-weight: 700; font-size: 13px; margin-bottom: 22px; }
+    h1 { font-size: clamp(42px, 6vw, 78px); line-height: 1.03; letter-spacing: -0.065em; margin-bottom: 22px; position: relative; z-index: 1; }
+    .gradient-text { background: linear-gradient(100deg, #111827 0%, var(--blue) 52%, var(--purple) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero-desc { color: var(--muted); font-size: 18px; max-width: 690px; position: relative; z-index: 1; }
+    .contact-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; position: relative; z-index: 1; }
+    .pill { padding: 10px 14px; border: 1px solid var(--soft); background: rgba(255, 255, 255, 0.72); border-radius: 14px; color: #334155; font-size: 14px; font-weight: 650; }
+
+    .profile-panel { padding: 26px; display: flex; flex-direction: column; gap: 18px; }
+    .score-card { background: linear-gradient(145deg, #0f172a, #1d4ed8); color: white; border-radius: 24px; padding: 28px; min-height: 210px; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; }
+    .score-card::after { content: ""; position: absolute; width: 210px; height: 210px; right: -70px; bottom: -90px; border-radius: 50%; background: rgba(255, 255, 255, 0.14); }
+    .score-title { font-size: 15px; opacity: 0.78; font-weight: 650; }
+    .score-main { font-size: 42px; font-weight: 900; letter-spacing: -0.04em; }
+    .score-main span { font-size: 16px; opacity: 0.75; font-weight: 600; margin-left: 4px; }
+    .mini-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .mini { padding: 18px; border-radius: 20px; background: #fff; border: 1px solid var(--soft); }
+    .mini strong { display: block; font-size: 24px; letter-spacing: -0.03em; }
+    .mini span { color: var(--muted); font-size: 13px; font-weight: 650; }
+
+    section { margin-top: 88px; }
+    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 20px; margin-bottom: 28px; }
+    .eyebrow { color: var(--blue); font-weight: 800; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 8px; }
+    h2 { font-size: clamp(28px, 4vw, 46px); letter-spacing: -0.05em; line-height: 1.1; }
+    .section-sub { color: var(--muted); max-width: 560px; font-size: 15px; }
+
+    .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+    .kpi { background: #fff; border: 1px solid var(--soft); border-radius: 24px; padding: 24px; box-shadow: 0 12px 28px rgba(15, 23, 42, 0.05); position: relative; overflow: hidden; }
+    .kpi::before { content: ""; position: absolute; left: 0; top: 0; width: 100%; height: 5px; background: linear-gradient(90deg, var(--blue), var(--cyan), var(--purple)); }
+    .kpi .num { font-size: 34px; font-weight: 900; letter-spacing: -0.05em; margin: 8px 0 2px; }
+    .kpi .label { color: var(--muted); font-size: 14px; font-weight: 650; }
+    .kpi .up { color: var(--pink); font-weight: 800; font-size: 13px; }
+
+    .dashboard { display: grid; grid-template-columns: 0.95fr 1.05fr; gap: 20px; }
+    .chart-card { padding: 26px; }
+    .bar-list { margin-top: 20px; display: grid; gap: 16px; }
+    .bar-item { display: grid; grid-template-columns: 92px 1fr 48px; gap: 12px; align-items: center; color: #334155; font-size: 14px; font-weight: 700; }
+    .bar-track { height: 12px; border-radius: 999px; background: #e2e8f0; overflow: hidden; }
+    .bar-fill { height: 100%; border-radius: 999px; background: linear-gradient(90deg, var(--pink), var(--purple)); }
+    .line-chart { height: 230px; margin-top: 24px; background: linear-gradient(to top, #e2e8f0 1px, transparent 1px) 0 0 / 100% 25%, #fff; border-radius: 18px; position: relative; overflow: hidden; border: 1px solid #eef2f7; }
+    .line-chart svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+
+    .evidence-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 20px; }
+    .evidence-card { overflow: hidden; }
+    .evidence-card.large-img { grid-column: span 7; }
+    .evidence-card.small-img { grid-column: span 5; }
+    .evidence-card.third-img { grid-column: span 4; }
+    .evidence-img { width: 100%; height: 420px; object-fit: cover; object-position: top center; display: block; background: #f1f5f9; }
+    .evidence-card.third-img .evidence-img { height: 360px; }
+    .evidence-info { padding: 20px 22px 24px; }
+    .evidence-info h3 { font-size: 19px; letter-spacing: -0.03em; margin-bottom: 8px; }
+    .evidence-info p { color: var(--muted); font-size: 14px; }
+
+    .case-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 20px; }
+    .case-card { padding: 30px; min-height: 280px; position: relative; overflow: hidden; }
+    .case-proof-layout { display: grid; grid-template-columns: 0.92fr 1.08fr; gap: 24px; align-items: start; }
+    .proof-stack { display: grid; grid-template-columns: 1fr; gap: 14px; }
+    .proof-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .proof-img {
+      width: 100%;
+      border-radius: 18px;
+      border: 1px solid var(--soft);
+      background: #ffffff;
+      object-fit: contain;
+      object-position: center;
+      display: block;
+      padding: 8px;
+      box-shadow: 0 10px 28px rgba(15, 23, 42, 0.06);
+    }
+    .proof-img.tall { height: 440px; }
+    .proof-img.mid { height: 420px; }
+    .proof-img.wide { height: 360px; }
+    .proof-img.pwc-img {
+      height: 420px;
+      max-width: 320px;
+      margin: 0 auto;
+      display: block;
+    }
+    .span-12 { grid-column: span 12; }
+    .span-7 { grid-column: span 7; } .span-5 { grid-column: span 5; } .span-6 { grid-column: span 6; } .span-4 { grid-column: span 4; } .span-8 { grid-column: span 8; }
+    .case-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin-bottom: 18px; }
+    .case-title { font-size: 24px; font-weight: 900; letter-spacing: -0.04em; line-height: 1.25; }
+    .case-meta { color: var(--muted); font-size: 13px; font-weight: 700; white-space: nowrap; }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0; }
+    .tag { display: inline-flex; padding: 6px 10px; border-radius: 999px; background: #eef4ff; color: #1d4ed8; font-size: 12px; font-weight: 800; }
+    .case-card p, .case-card li { color: #475569; font-size: 15px; }
+    .case-card ul { padding-left: 18px; margin-top: 14px; }
+    .metric-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 22px; }
+    .metric { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 18px; padding: 14px; }
+    .metric strong { display: block; font-size: 22px; color: #0f172a; letter-spacing: -0.04em; }
+    .metric span { color: var(--muted); font-size: 12px; font-weight: 650; }
+    .flow { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-top: 22px; }
+    .flow div { background: linear-gradient(180deg, #ffffff, #f1f5f9); border: 1px solid #dbe3ee; border-radius: 18px; padding: 16px 12px; text-align: center; font-size: 13px; font-weight: 800; color: #334155; }
+
+    .video-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 20px; }
+    .video-card { grid-column: span 6; overflow: hidden; }
+    .video-thumb { width: 100%; height: 260px; object-fit: cover; object-position: center; display: block; background: linear-gradient(135deg,#e2e8f0,#c7d2fe); }
+    .video-body { padding: 20px; }
+    .video-body h3 { font-size: 20px; margin-bottom: 6px; }
+    .video-body p { color: var(--muted); font-size: 14px; }
+    .video-actions { margin-top: 14px; display: flex; gap: 10px; }
+    .btn { padding: 10px 14px; border-radius: 12px; background: #111827; color: #fff; font-size: 13px; font-weight: 700; }
+    .btn.alt { background: #eef4ff; color: #1d4ed8; }
+
+    .creative-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 20px; }
+    .creative-card { grid-column: span 6; padding: 28px; overflow: hidden; }
+    .creative-card.full { grid-column: span 12; }
+    .photo-scroll { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 6px 4px 18px; margin-top: 18px; }
+    .photo-scroll::-webkit-scrollbar { height: 10px; }
+    .photo-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 999px; }
+    .photo-item { min-width: 360px; aspect-ratio: 4 / 3; border-radius: 22px; overflow: hidden; scroll-snap-align: start; border: 1px solid var(--soft); background: #f1f5f9; }
+    .photo-item img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
+    .writing-layout { display: grid; grid-template-columns: 0.95fr 1.05fr; gap: 22px; align-items: start; margin-top: 20px; }
+    .writing-images { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .writing-images img { width: 100%; height: 520px; object-fit: contain; object-position: center; border-radius: 20px; border: 1px solid var(--soft); background: #fff; padding: 8px; }
+    .analysis-list { display: grid; gap: 14px; }
+    .analysis-item { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 18px; padding: 16px; }
+    .analysis-item strong { display: block; margin-bottom: 6px; font-size: 16px; }
+    .analysis-item span { color: var(--muted); font-size: 14px; }
+
+    .timeline { display: grid; gap: 18px; }
+    .timeline-item { display: grid; grid-template-columns: 220px 1fr; gap: 24px; padding: 28px; }
+    .time { color: var(--blue); font-weight: 900; font-size: 14px; }
+    .role { font-size: 21px; font-weight: 900; letter-spacing: -0.03em; margin-bottom: 8px; }
+
+    .skill-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .skill-card { padding: 26px; }
+    .skill-card h3 { font-size: 19px; margin-bottom: 12px; }
+    .skill-card p { color: var(--muted); font-size: 15px; }
+    footer { margin-top: 90px; text-align: center; color: var(--muted); font-size: 13px; }
+
+    @media (max-width: 920px) {
+      .hero, .dashboard, .timeline-item, .writing-layout { grid-template-columns: 1fr; }
+      .evidence-card.large-img, .evidence-card.small-img, .evidence-card.third-img, .video-card, .creative-card, .creative-card.full { grid-column: span 12; }
+      .kpi-grid, .skill-grid { grid-template-columns: repeat(2, 1fr); }
+      .span-7, .span-5, .span-6, .span-4, .span-8 { grid-column: span 12; }
+      .case-proof-layout { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .hero-card { padding: 34px; }
+      .flow { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 620px) {
+      .container { padding: 36px 16px 70px; }
+      .evidence-img { height: 320px; }
+      .kpi-grid, .mini-grid, .metric-row, .skill-grid, .writing-images { grid-template-columns: 1fr; }
+      .case-grid, .creative-grid { grid-template-columns: 1fr; }
+      .span-7, .span-5, .span-6, .span-4, .span-8 { grid-column: auto; }
+      .hero-card { padding: 28px; }
+      .bar-item { grid-template-columns: 72px 1fr 40px; }
+      .photo-item { min-width: 260px; height: auto; }
+      .proof-img.wide { height: 260px; }
+      .proof-img.mid, .proof-img.tall { height: 340px; }
+      .writing-images img { height: 420px; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <div class="logo">Enxi Zou<span>.</span></div>
+      <div class="nav-links">
+        <a href="#intro">自我介绍</a>
+        <a href="#growth">增长数据</a>
+        
+        <a href="#cases">项目案例</a>
+        <a href="#videos">视频作品</a>
+        <a href="#creative">内容创作</a>
+        <a href="#experience">经历</a>
+        <a href="#skills">技能</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+    <section class="hero" id="about">
+      <div class="hero-card">
+        <div class="badge">Growth Operator · 内容增长 · 电商运营 · 数据分析</div>
+        <h1>邹恩熙<br><span class="gradient-text">增长型运营作品集</span></h1>
+        <p class="hero-desc">利兹大学数学与统计本科在读，具备电商、内容平台、校园招聘与市场研究项目经验。擅长通过内容策划、关键词策略、用户调研、数据复盘与转化路径优化，完成从流量获取到用户沉淀和商业转化的闭环。</p>
+        <div class="contact-row">
+          <span class="pill">英国利兹大学｜数学与统计</span>
+          <span class="pill">电话：15531732903</span>
+          <span class="pill">邮箱：15531732903@163.com</span>
+          <span class="pill">小红书 ID：94188797774</span>
+        </div>
+      </div>
+
+      <div class="profile-panel panel">
+        <div class="score-card">
+          <div>
+            <div class="score-title">核心定位</div>
+            <div class="score-main">增长运营<span>Growth Ops</span></div>
+          </div>
+          <p>用内容获取流量，用数据优化转化，用项目经验沉淀运营方法。</p>
+        </div>
+        <div class="mini-grid">
+          <div class="mini"><strong>内容增长</strong><span>小红书账号从0到1冷启动</span></div>
+          <div class="mini"><strong>电商转化</strong><span>闲鱼CCD相机交易闭环</span></div>
+          <div class="mini"><strong>数据分析</strong><span>SQL / Tableau</span></div>
+          <div class="mini"><strong>校园传播</strong><span>PwC校招内容转化</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="intro">
+      <div class="section-head">
+        <div><div class="eyebrow">About Me</div><h2>自我介绍</h2></div>
+      </div>
+      <div class="case-card span-12">
+        <div class="case-proof-layout">
+          <div style="display:flex;justify-content:center;align-items:center;margin-top:40px;">
+            <div style="width:100%;max-width:360px;height:420px;border-radius:24px;overflow:hidden;border:4px solid #e5eaf3;box-shadow:0 18px 45px rgba(15,23,42,0.12);margin:0 auto;">
+            <img src="微信图片_20260428132849_1477_28.jpg" alt="邹恩熙个人照片" style="width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+          </div>
+          <div>
+            <div class="case-title" style="margin-bottom:10px;">邹恩熙</div>
+            <p style="color:#64748b;margin-bottom:18px;">利兹大学数学与统计本科在读，关注增长运营、内容增长、电商转化与数据分析。具备内容平台运营、闲鱼电商运营、校园招聘传播和市场研究项目经验。</p>
+            <div class="metric-row">
+              <div class="metric"><strong>19</strong><span>年龄</span></div>
+              <div class="metric"><strong>本科</strong><span>学历</span></div>
+              <div class="metric"><strong>数学和统计</strong><span>专业</span></div>
+            </div>
+            <div class="tags" style="margin-top:18px;">
+              <span class="tag">增长运营</span>
+              <span class="tag">内容增长</span>
+              <span class="tag">数据分析</span>
+              <span class="tag">网感好</span>
+              <span class="tag">冲浪十级达人</span>
+              <span class="tag">ISTJ</span>
+            </div>
+            <div class="skill-grid" style="grid-template-columns:repeat(2,1fr);margin-top:18px;">
+              <div class="skill-card" style="box-shadow:none;"><h3>基本信息</h3><p>学校：利兹大学<br>学历：本科<br>专业：数学和统计</p></div>
+              <div class="skill-card" style="box-shadow:none;"><h3>联系方式</h3><p>邮箱：15531732903@163.com<br>电话/微信：15531732903</p></div>
+              <div class="skill-card" style="box-shadow:none;"><h3>办公软件</h3><p>PPT、Word、Excel、SQL</p></div>
+              <div class="skill-card" style="box-shadow:none;"><h3>内容技能</h3><p>剪映、必剪、摄影、摄像、写作、文案</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="growth">
+      <div class="section-head">
+        <div><div class="eyebrow">Growth Snapshot</div><h2>关键增长数据</h2></div>
+        <p class="section-sub">跨项目展示内容增长、招聘转化、电商盈利、用户调研与数据分析成果。</p>
+      </div>
+      <div class="kpi-grid">
+        <div class="kpi"><div class="label">内容增长</div><div class="num">17.8万</div><div class="up">小红书近30日曝光，环比+19%</div></div>
+        <div class="kpi"><div class="label">招聘转化</div><div class="num">200+</div><div class="up">PwC内推网申，8人成功入职</div></div>
+        <div class="kpi"><div class="label">电商盈利</div><div class="num">55.5%</div><div class="up">闲鱼综合毛利率，部分单品&gt;70%</div></div>
+        <div class="kpi"><div class="label">用户调研</div><div class="num">31份</div><div class="up">Reporti Pro增长策略问卷样本</div></div>
+      </div>
+    </section>
+
+    
+
+    
+
+    <section id="cases">
+      <div class="section-head">
+        <div><div class="eyebrow">Case Studies</div><h2>核心项目案例</h2></div>
+      </div>
+
+      <div class="case-grid">
+        <article class="case-card span-12">
+          <div class="case-proof-layout">
+            <div>
+              <div class="case-top">
+                <div class="case-title">小红书教育账号｜从0到1内容增长与私域沉淀</div>
+                <div class="case-meta">2025/08 - 至今</div>
+              </div>
+              <p>账号「啃吾栗（免费资源共享版）」主要分享国内外免费优质资源，包括夏校、科研、实习和证书申请攻略，重点推荐全额资助、可开证明的项目，面向海内外大学生，帮助大家用更低成本获得更好的机会。</p>
+              <div class="tags">
+                <span class="tag">内容冷启动</span>
+                <span class="tag">搜索增长</span>
+                <span class="tag">私域沉淀</span>
+                <span class="tag">商业化</span>
+              </div>
+              <ul>
+                <li>通过「免费资源 + 名校项目 + 官方申请信息」建立差异化定位，解决学生履历提升和信息差需求。</li>
+                <li>对海内外项目信息进行筛选、翻译、整理，并结合申请流程与准备要点进行结构化输出。</li>
+                <li>通过评论区互动建立基础连接，引导明确需求用户进入社群，并通过资料分享与答疑维持活跃。</li>
+                <li>账号累计发布31篇内容，粉丝5777+，累计获得3.2万+点赞和收藏，社群800人，粉丝活跃占比87.2%。</li>
+              </ul>
+              <div class="metric-row">
+                <div class="metric"><strong>31</strong><span>发布内容</span></div>
+                <div class="metric"><strong>3.2万+</strong><span>赞藏</span></div>
+                <div class="metric"><strong>800</strong><span>社群用户</span></div>
+              </div>
+              <div style="margin-top:16px;">
+                <a href="https://xhslink.com/m/4Y9qspTXF8E" target="_blank" class="btn">跳转小红书主页</a>
+              </div>
+            </div>
+
+            <div class="proof-grid-2">
+              <img class="proof-img mid" src="微信图片_20260427215114_1446_28.jpg" alt="小红书主页截图">
+              <img class="proof-img mid" src="微信图片_20260427214916_1444_28.jpg" alt="数据中心截图">
+            </div>
+          </div>
+        </article>
+
+        <article class="case-card span-12">
+          <div style="margin-top:-10px;margin-bottom:10px;">
+            <div style="font-weight:800;font-size:18px;margin-bottom:12px;">爆款内容示例</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;">
+              <img class="proof-img mid" src="微信图片_20260428123429_1469_28.jpg" alt="爆款案例1">
+              <img class="proof-img mid" src="微信图片_20260428123428_1468_28.jpg" alt="爆款案例2">
+              <img class="proof-img mid" src="微信图片_20260428123426_1467_28.jpg" alt="爆款案例3">
+            </div>
+          </div>
+        </article>
+
+        <article class="case-card span-12">
+          <div class="case-proof-layout">
+            <div>
+              <div class="case-top">
+                <div class="case-title">闲鱼电商运营｜CCD相机转售与转化优化</div>
+                <div class="case-meta">2025/06 - 2025/09</div>
+              </div>
+              <p>个人闲鱼账号「砸锅卖铁去上学233」，主要负责CCD相机类目商品运营，完成选品、内容引流、转化优化及用户运营闭环。</p>
+              <div class="tags">
+                <span class="tag">电商运营</span>
+                <span class="tag">站外引流</span>
+                <span class="tag">转化优化</span>
+                <span class="tag">用户口碑</span>
+              </div>
+              <ul>
+                <li>基于小红书平台运营CCD相机系列，通过关键词调研锁定「好价CCD」「CCD推荐」等热搜词进行内容种草与定向互动引流。</li>
+                <li>针对转化率偏低商品，设计「实拍检机视频」内容，提升用户信任与咨询转化。</li>
+                <li>结合闲鱼竞品数据和市场需求，制定动态定价策略，利用汇率优势及转售溢价提升利润。</li>
+                <li>账号整体累计完成99单成交，总成交额5468元；CCD类目完成11单，保持100%好评率。</li>
+              </ul>
+              <div class="metric-row">
+                <div class="metric"><strong>99</strong><span>累计成交</span></div>
+                <div class="metric"><strong>5468元</strong><span>总成交额</span></div>
+                <div class="metric"><strong>100%</strong><span>好评率</span></div>
+              </div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;">
+              <img class="proof-img mid" src="微信图片_20260427215346_1447_28.jpg" alt="闲鱼交易1">
+              <img class="proof-img mid" src="微信图片_20260428124204_1471_28.jpg" alt="闲鱼交易2">
+              <img class="proof-img mid" src="微信图片_20260428124208_1472_28.jpg" alt="闲鱼交易3">
+            </div>
+          </div>
+        </article>
+
+        <article class="case-card span-12">
+          <div class="case-proof-layout">
+            <div>
+              <div class="case-top">
+                <div class="case-title">PwC校园大使｜内容引流到招聘转化</div>
+                <div class="case-meta">2025/08 - 至今</div>
+              </div>
+              <p>以普华永道校园大使身份参与雇主品牌与校园招聘推广，基于小红书策划校园大使申请攻略与校招经验指南。</p>
+              <div class="tags">
+                <span class="tag">雇主品牌</span>
+                <span class="tag">内容转化</span>
+                <span class="tag">社群答疑</span>
+              </div>
+              <ul>
+                <li>单篇内容平均获赞与收藏100+，提升校招信息触达与品牌曝光。</li>
+                <li>通过内推机制吸引200+在校学生完成网申，约40人进入面试流程，8人成功入职。</li>
+                <li>在校招社群内围绕岗位信息、申请流程与常见问题进行集中答疑。</li>
+              </ul>
+              <div class="metric-row" style="max-width:520px;">
+                <div class="metric"><strong>200+</strong><span>网申转化</span></div>
+                <div class="metric"><strong>40</strong><span>进入面试</span></div>
+                <div class="metric"><strong>8</strong><span>成功入职</span></div>
+              </div>
+            </div>
+            <div>
+              <img class="proof-img pwc-img" src="微信图片_20260427231958_1459_28.jpg" alt="PwC项目截图">
+            </div>
+          </div>
+        </article>
+
+        <article class="case-card span-6"><div class="case-top"><div class="case-title">淘宝用户行为分析｜亿级数据转化漏斗与用户分层</div><div class="case-meta">2026/04</div></div><p>基于1亿条淘宝用户行为数据，分析用户转化路径，构建用户价值分层体系，输出精细化运营策略。</p><div class="tags"><span class="tag">MySQL</span><span class="tag">转化漏斗</span><span class="tag">Tableau</span></div><ul><li>使用MySQL进行数据清洗与预处理，包括去重、异常时间过滤及规范化处理。</li><li>搭建浏览、加购、购买转化漏斗，并基于用户行为数据划分核心、高潜、沉默等用户群体。</li><li>拆解8类典型购买路径，识别关键流失节点与转化驱动因素。</li><li>使用Tableau搭建交互式看板，支持运营团队周度复盘。</li></ul></article>
+
+        <article class="case-card span-6"><div class="case-top"><div class="case-title">Reporti Pro 增长战略咨询｜活动安全产品市场研究</div><div class="case-meta">2026/02</div></div><p>调研英国活动与演出安全技术市场，分析事件管理软件行业规模及增长趋势，识别基于现场观众上报的安全事件报告系统细分机会。</p><div class="tags"><span class="tag">市场研究</span><span class="tag">用户调研</span><span class="tag">增长策略</span><span class="tag">竞品分析</span></div><ul><li>对比Zinc Synapse、Halo Solutions、Woov等产品，梳理企业级安全管理平台与用户端安全工具竞品格局。</li><li>设计并分析31份用户问卷，研究大型活动场景下观众求助行为与数字安全工具信任度。</li><li>发现87%用户更倾向寻找现场工作人员而非数字平台，90.3%用户更愿意使用品牌识别度更高的安全服务。</li><li>提出在购票页面、活动前短信提醒及现场入口提示中增加平台入口，并设计NFC手环或二维码贴纸作为快速访问渠道。</li></ul></article>
+
+        <article class="case-card span-6"><div class="case-top"><div class="case-title">英国心脏基金会｜线上零售商品运营</div><div class="case-meta">2025/02 - 2025/05</div></div><p>参与线上商品从拍摄、分类、定价到上架的完整流程，优化SKU结构与商品详情页。</p><div class="tags"><span class="tag">SKU管理</span><span class="tag">标题优化</span><span class="tag">竞品分析</span></div><ul><li>累计处理商品300+，独立完成50+商品拍摄与详情页优化。</li><li>通过标题与关键词优化，使点击率提升约15%，转化率提升约8%。</li><li>总结定价“三要素”：新旧程度、品牌价值、市场比价，推动动销率平均提升20%。</li></ul></article>
+
+        <article class="case-card span-6"><div class="case-top"><div class="case-title">浙江大学共享与发展研究院｜社会调研项目访员</div><div class="case-meta">2025/07</div></div><p>参与“共同富裕理论与调查”社会调研项目，完成理论学习、实地走访、问卷采集与数据整理。</p><div class="tags"><span class="tag">社会调研</span><span class="tag">问卷采集</span><span class="tag">数据整理</span></div><ul><li>系统学习共同富裕、公共服务制度、收入分配与社会保障、乡村振兴等理论知识。</li><li>实地走访7户家庭，收集收入水平、生活状况、保险、养老金与公共服务体验等反馈。</li><li>将问卷信息整理录入Excel版调研进度表，确保数据完整、准确并按时上报。</li></ul></article>
+      </div>
+    </section>
+
+    <section id="analysis">
+      <div class="section-head">
+        <div><div class="eyebrow">Data Analysis</div><h2>数据分析能力</h2></div>
+      </div>
+      <div class="case-card" style="padding:32px;">
+        <img class="proof-img wide" src="微信图片_20260427234900_1462_28.png" alt="数据分析截图" style="height:auto;max-height:520px;margin-bottom:22px;">
+        <p><strong>“免费 + 海外/名校 + 全额资助 + 暑研/夏校/科研”帖子总表现：</strong></p>
+        <ul>
+          <li>总曝光：1,345,760</li>
+          <li>总观看：232,610</li>
+          <li>平均封面点击率：16.3%</li>
+          <li>总点赞：12,226</li>
+          <li>总收藏：10,697</li>
+          <li>总涨粉：1,682</li>
+        </ul>
+        <p style="margin-top:16px;"><strong>表现最好的内容：</strong></p>
+        <ul>
+          <li>免费去日本东京8周｜UTokyo全额资助科研夏校：曝光157,243，观看28,848</li>
+          <li>免费去新加坡8周科研｜NUS全额资助暑期科研：曝光143,446，观看23,724</li>
+          <li>免费去韩国｜2026韩国文化营：曝光138,156，观看22,802</li>
+        </ul>
+        <p style="margin-top:16px;"><strong>最能涨粉：</strong></p>
+        <ul>
+          <li>数据科学奖学金｜一年免费课程：涨粉226，收藏2,042，互动率极高</li>
+          <li>NUS全额资助暑期科研：涨粉206</li>
+          <li>UTokyo全额资助科研夏校：涨粉171</li>
+        </ul>
+        <p style="margin-top:16px;"><strong>内容方向判断：</strong></p>
+        <ul>
+          <li>免费海外项目：“免费去日本 / 新加坡 / 韩国 / 香港 / 欧洲”这类标题非常强，天然有点击欲望。</li>
+          <li>全额资助 / 奖学金：“全额资助”“奖学金”不仅带来曝光，也更容易收藏和涨粉。</li>
+          <li>名校 + 明确周期：如“东京大学8周”“NUS暑研”“香港大学6周”，比泛泛的“暑期项目”更有信任感。</li>
+          <li>数据科学/实用技能类：“数据科学奖学金”虽然播放率不算最高，但收藏、点赞、涨粉都非常强，说明它是高价值转粉内容。</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="videos">
+      <div class="section-head">
+        <div><div class="eyebrow">Video Works</div><h2>视频剪辑能力</h2></div>
+        
+      </div>
+      <div class="video-grid">
+        <div class="video-card">
+          <img class="video-thumb" src="微信图片_20260427221225_1449_28.png" alt="免费夏校、科研、证书、大厂训练营等项目搜索方法视频截图">
+          <div class="video-body">
+            <h3>免费夏校、科研、证书、大厂训练营等项目搜索方法</h3>
+            <p>围绕学生“如何找到优质免费项目”的需求，拆解信息来源、筛选逻辑与申请路径，体现工具型内容策划和剪辑表达能力。</p>
+            <div class="video-actions"><a class="btn" href="https://b23.tv/EJxVq7O" target="_blank">点击观看视频</a></div>
+          </div>
+        </div>
+        <div class="video-card">
+          <img class="video-thumb" src="微信图片_20260427221227_1450_28.png" alt="什么是辛普森悖论视频截图">
+          <div class="video-body">
+            <h3>什么是辛普森悖论</h3>
+            <p>将统计学概念转化为通俗化短视频内容，通过案例解释、字幕节奏与画面信息组织提升理解效率。</p>
+            <div class="video-actions"><a class="btn" href="https://b23.tv/4i24ah6" target="_blank">点击观看视频</a></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="creative">
+      <div class="section-head">
+        <div><div class="eyebrow">Creative Skills</div><h2>摄影能力</h2></div>
+      </div>
+      <div class="creative-grid">
+        <div class="creative-card full">
+          <div class="case-top"><div class="case-title">摄影能力｜CCD相机实拍与商品视觉优化</div><div class="case-meta">6张作品横向滚动</div></div>
+          <p>使用CCD相机进行实拍，输出具有复古质感的图片素材，用于闲鱼平台商品展示与内容发布。结合用户审美偏好优化图片风格与构图，提高商品展示吸引力，增强点击与咨询转化。</p>
+          <div class="photo-scroll">
+            <div class="photo-item"><img src="微信图片_20260427222850_1454_28.jpg"></div>
+            <div class="photo-item"><img src="微信图片_20260427222840_1453_28.jpg"></div>
+            <div class="photo-item"><img src="微信图片_20260427222831_1452_28.jpg"></div>
+            <div class="photo-item"><img src="微信图片_20260427222823_1451_28.jpg"></div>
+            <div class="photo-item"><img src="微信图片_20260427223716_1458_28.jpg"></div>
+            <div class="photo-item"><img src="微信图片_20260427223643_1457_28.jpg"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="writing">
+      <div class="section-head">
+        <div><div class="eyebrow">Writing</div><h2>文案撰写能力</h2></div>
+      </div>
+      <div class="creative-grid">
+        <div class="creative-card full">
+          <div class="case-top"><div class="case-title">小红书帖子结构拆解</div><div class="case-meta">2张案例图</div></div>
+          <p>以教育资源类笔记为例，围绕免费 名校 申请路径 材料准备 平台标签进行信息组织，降低用户理解成本，同时提高点击 收藏和咨询转化。</p>
+          <div class="writing-layout">
+            <div class="writing-images">
+              <img src="微信图片_20260427223316_1455_28.jpg">
+              <img src="微信图片_20260427223328_1456_28.jpg">
+            </div>
+            <div class="analysis-list">
+              <div class="analysis-item"><strong>标题突出免费与名校</strong><span>提高点击率 降低理解成本 增强内容吸引力</span></div>
+              <div class="analysis-item"><strong>资助信息单独展示</strong><span>强化免费认知 降低参与门槛 提升收藏和关注</span></div>
+              <div class="analysis-item"><strong>申请条件结构化</strong><span>减少重复咨询 提升内容可信度</span></div>
+              <div class="analysis-item"><strong>标签与关键词布局</strong><span>提升曝光 进入平台流量池</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="section-head"><div><div class="eyebrow">Experience</div><h2>教育与经历时间线</h2></div></div>
+      <div class="timeline">
+  <div class="timeline-item">
+    <div class="time">2024/09 - 2027/06</div>
+    <div>
+      <div class="role">英国利兹大学｜数学与统计 本科在读</div>
+      <p class="section-sub">主修课程：核心数学、计算数学与建模、统计方法、随机过程、时间序列、数学调查等。成绩水平：2:1。</p>
+    </div>
+  </div>
+</div>
+</section>
+
+    <section id="skills">
+      <div class="section-head"><div><div class="eyebrow">Skills</div><h2>技能与证书</h2></div></div>
+      <div class="skill-grid">
+        <div class="skill-card"><h3>数据分析</h3><p>Excel（数据透视表、VLOOKUP等）、SQL基础查询/分组/连接、Tableau可视化看板。</p></div>
+        <div class="skill-card"><h3>内容与运营</h3><p>小红书内容策划、关键词调研、竞品分析、社群运营、用户调研、转化路径优化。</p></div>
+        <div class="skill-card"><h3>视觉与剪辑</h3><p>剪映视频剪辑、CCD相机实拍、商品图片构图与风格优化。</p></div>
+        <div class="skill-card"><h3>办公与表达</h3><p>PowerPoint；雅思6.5，具备良好的英语读写能力。</p></div>
+        <div class="skill-card"><h3>荣誉证书</h3><p>“21世纪杯”全国英语演讲比赛天津赛区二等奖；汉阳国际冬季学校-微观经济学原理课程。</p></div>
+        <div class="skill-card"><h3>求职方向</h3><p>增长运营、内容运营、新媒体运营、电商运营、用户运营、商业分析相关岗位。</p></div>
+      </div>
+    </section>
+
+    <footer>© 2026 邹恩熙 Enxi Zou ｜ Growth Operations Portfolio</footer>
+  </main>
+</body>
+</html>
